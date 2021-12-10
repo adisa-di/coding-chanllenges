@@ -1,6 +1,6 @@
 import program
 import unittest
-import traverse
+import findSum
 
 
 class BST:
@@ -35,8 +35,10 @@ class TestProgram(unittest.TestCase):
         root.right.left = BST(13)
         root.right.left.right = BST(14)
         root.right.right = BST(22)
-        res = traverse.iterateBST(root, 27)
-        print(res)
+        res = findSum.branchSums(root)
+
+        expected = [18, 20, 52, 47]
+        self.assertEqual(expected, res)
 
 
 if __name__ == '__main__':

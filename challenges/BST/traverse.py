@@ -20,8 +20,6 @@ def iterateBSTHelper(tree, set, target):
     if (tree.left is not None):
         iterateBSTHelper(tree.left, set, target)
 
-    print(tree.value)
-
     # otherwise go right
     if (tree.right is not None):
         iterateBSTHelper(tree.right, set, target)
