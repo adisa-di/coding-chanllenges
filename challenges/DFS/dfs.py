@@ -1,14 +1,13 @@
 class Node:
     def __init__(self, name):
-        self.children = []
         self.name = name
+        self.children = []
 
-    def addChild(self, name):
-        self.children.append(Node(name))
+    def addChild(self, child):
+        self.children.append(Node(child))
         return self
 
     def depthFirst(self, array):
-
         # append child to array
         array.append(self.name)
 
