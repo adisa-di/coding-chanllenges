@@ -30,3 +30,13 @@ def branchSumHelper(root, array, currSum):
     # go left
     branchSumHelper(root.left, array, currSum)
     branchSumHelper(root.right, array, currSum)
+
+
+def nodeDepths(root):
+    return nodeHelper(root)
+
+
+def nodeHelper(root, depth=0):
+    if (root is None):
+        return 0
+    return depth + nodeHelper(root.left, depth + 1) + nodeHelper(root.right, depth + 1)
