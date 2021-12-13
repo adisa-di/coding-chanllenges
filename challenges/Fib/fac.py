@@ -8,7 +8,6 @@ def factorial(n):
 
     return ans
 
-
 def anagrams(words):
     hash = {}
     for word in words:
@@ -30,4 +29,8 @@ def anagrams(words):
     for key in hash:
         result.append(hash[key])
 
+    hash1 = {}
+
     return result
+
+    

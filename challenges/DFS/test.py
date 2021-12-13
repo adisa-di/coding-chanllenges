@@ -1,5 +1,6 @@
 import unittest
 import dfs
+import productSum
 
 
 class TestProgram(unittest.TestCase):
@@ -12,6 +13,10 @@ class TestProgram(unittest.TestCase):
         graph.children[2].children[0].addChild("K")
         self.assertEqual(graph.depthFirst(
             []), ["A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"])
+
+    def test_case_2(self):
+        res = productSum.productSum([1, 2, [3, 4], 5, [[6]]])
+        self.assertEqual(res, 58)
 
 
 if __name__ == "__main__":
