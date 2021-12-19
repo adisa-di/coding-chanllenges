@@ -31,16 +31,35 @@ function arrayOfProducts(array) {
 // Do not edit the line below.
 exports.arrayOfProducts = arrayOfProducts;
 
+// optimize one step 
 
-class Payroll {
-  constructor(name) {
-    this.name = name;
-    this.frequency = [1, 2, 3];
-  }
+// function arrayOfProducts(array) {
+// 	// O(N) time & O(N) space
+// 	function getEmptyArray() {
+// 		return Array.from(Array(array.length)).fill(0, 0, array.length);
+// 	}
+	
+// 	const leftArray = getEmptyArray();
+// 	const rightArray = getEmptyArray();
+// 	const finalArray = getEmptyArray();
+	
+// 	// fill the left and right array with the running product
+// 	let leftProduct = 1;
+// 	for (let i = 0; i <= array.length-1; i++) {
+// 		leftArray[i] = leftProduct;
+// 		leftProduct *= array[i];
+// 	}
+	
+// 	let rightProduct = 1;
+// 	for (let i = array.length - 1; i >= 0; i--) {
+// 		leftArray[i] *= rightProduct;
+// 		rightProduct *= array[i];
+// 	}
+	
+// 	return leftArray;
+// }
 
-  getFrequence() {
-    return this.frequency;
-  }
-}
+// // Do not edit the line below.
+// exports.arrayOfProducts = arrayOfProducts;
 
-console.log(new Payroll("adisa").frequency);
+
