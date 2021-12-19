@@ -30,3 +30,17 @@ function arrayOfProducts(array) {
 
 // Do not edit the line below.
 exports.arrayOfProducts = arrayOfProducts;
+
+
+class Payroll {
+  constructor(name) {
+    this.name = name;
+    this.frequency = [1, 2, 3];
+  }
+
+  getFrequence() {
+    return this.frequency;
+  }
+}
+
+console.log(new Payroll("adisa").frequency);
