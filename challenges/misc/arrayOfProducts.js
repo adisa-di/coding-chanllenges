@@ -33,6 +33,7 @@ exports.arrayOfProducts = arrayOfProducts;
 
 // optimize one step 
 
+// O(N)
 // function arrayOfProducts(array) {
 // 	// O(N) time & O(N) space
 // 	function getEmptyArray() {
