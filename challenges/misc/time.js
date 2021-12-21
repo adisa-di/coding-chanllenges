@@ -13,3 +13,5 @@ if (start.includes("PM") && end.includes("AM")) {
 
 // time diff in minutes
 console.log(Math.abs(endDate - startDate) / 60);
+
+cont test = array.sort()
