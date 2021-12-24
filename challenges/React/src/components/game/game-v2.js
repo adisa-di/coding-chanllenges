@@ -81,6 +81,7 @@ function reducer(state, action) {
           ...state,
           board: state.board,
           winner: state.player,
+          player: state.player === 'X' ? 'O' : 'X'
         }
       } else {
         return {
