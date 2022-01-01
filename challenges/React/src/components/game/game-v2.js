@@ -61,6 +61,29 @@ const initState = {
   board: [['', '', ''], ['', '', ''], ['', '', '']]
 }
 
+
+function checkWinner(board) {
+  // check row 
+  for (let row=0; row < 3; row++) {
+    if (board[row][0] !== '' && board[row][0] ===  board[row][1] &&  board[row][1] ===  board[row][2]) {
+      return true;
+    }
+  }
+
+  // check column
+  for (let col=0; col < 3; col++) {
+    if (board[0][col] !== '' && board[0][col] === board[1][col] && board[1][col] === board[2][col]) {
+      return true;
+    };
+  }
+
+  // check diagonals
+  return (board[0][0] !== '' && board[0][0] === board[1][1] &&  board[1][1] === board[2][2])
+          || (board[0][2] !== '' && board[0][2] === board[1][1] &&  board[1][1] === board[2][0])
+
+}
+
+
 function reducer(state, action) {
   switch(action.type) {
     case 'reset':
@@ -70,18 +93,21 @@ function reducer(state, action) {
         board: [['', '', ''], ['', '', ''], ['', '', '']]
       };
     case 'takeTurn':
-      const { row, col, checkWinner } = action.payload;
+      const { row, col } = action.payload;
 
       // update board and check if there are any winners
       state.board[row][col] = state.player;
+
+      // we have to sent check winner the new, updated board
       const winner = checkWinner(state.board);
 
-      if (winner) {
+      // if there is a winner then update the board and other states to reflect it
+      if (winner) { 
         return {
           ...state,
           board: state.board,
           winner: state.player,
-          player: state.player === 'X' ? 'O' : 'X'
+          player: `${state.player} won! Reset game to play again` // still want to update next player
         }
       } else {
         return {
@@ -116,29 +142,8 @@ function Board() {
   function takeTurn(row, col) {
     // if that space on the board is not taken yet and there's no winner
     if (!state.board[row][col] && state.winner === 'None') {
-      dispatch({ type: 'takeTurn', payload: { row, col, checkWinner }});
+      dispatch({ type: 'takeTurn', payload: { row, col }});
     }
-  }
-
-  function checkWinner(board) {
-    // check row 
-    for (let row=0; row < 3; row++) {
-      if (board[row][0] !== '' && board[row][0] ===  board[row][1] &&  board[row][1] ===  board[row][2]) {
-        return true;
-      }
-    }
-
-    // check column
-    for (let col=0; col < 3; col++) {
-      if (board[0][col] !== '' && board[0][col] === board[1][col] && board[1][col] === board[2][col]) {
-        return true;
-      };
-    }
-
-    // check diagonals
-    return (board[0][0] !== '' && board[0][0] === board[1][1] &&  board[1][1] === board[2][2])
-            || (board[0][2] !== '' && board[0][2] === board[1][1] &&  board[1][1] === board[2][0])
-
   }
 
   return (
