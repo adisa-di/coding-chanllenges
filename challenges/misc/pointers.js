@@ -64,3 +64,49 @@ var twoSum = function(numbers, target) {
 };
 
 console.log(sortedSquares([-3, -3, -2, 1, 4, 5, 6, 8]));
+
+// Permutations
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {boolean}
+ */
+
+ var getFrequencies = function(s1) {
+  const mem = {};
+  for (let i = 0; i < s1.length; i++) {
+      const letter = s1[i];
+      if (!mem[letter]) {
+          mem[letter] = 0;
+      }
+      mem[letter] += 1;
+  }
+  return mem;
+}
+
+var match = function(mem1, mem2) {
+  for (key in mem1) {
+      if (mem1[key] !== mem2[key]) {
+          return false;
+      }
+  }
+  return true;
+}
+
+var checkInclusion = function(s1, s2) {
+  
+  const target = getFrequencies(s1); 
+  
+  for (let i = 0; i <= s2.length - s1.length; i++) {
+      
+      // consider the current substring
+      const sub = s2.substring(i, i + s1.length);
+      const subFreq = getFrequencies(sub);
+
+      if (match(target, subFreq)) {
+          return true;
+      }
+  }
+  
+  return false;
+};
