@@ -14,9 +14,7 @@ def helper(w, h, mem):
 
 
 def numberOfWaysToTraverseGraph(width, height):
-    table = []
-    for n in range(0, height):
-        table.append([-1] * width)
+    table = [[-1 for _ in range(width)] for _ in range(height)]
 
     table[0][0] = 0
 
