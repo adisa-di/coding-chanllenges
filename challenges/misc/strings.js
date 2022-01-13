@@ -42,3 +42,45 @@ function groupAnagrams(words) {
 
 // Do not edit the line below.
 exports.groupAnagrams = groupAnagrams;
+
+
+function minimumCharactersForWords(words) {
+  // Write your code here.
+	
+	const freq = {}
+	
+	for (const w in words) {
+		const word = words[w];
+		
+		wordFreq = {}
+		for (const k in word) {
+			const char = word[k];
+			if (!wordFreq[char]) {
+				wordFreq[char] = 0;
+			}
+				wordFreq[char] += 1;
+		}
+		
+		for (const key in wordFreq) {	
+			if (freq[key]) {
+				if (freq[key] < wordFreq[key]) {
+					freq[key] = wordFreq[key]
+				}
+			} else {
+				freq[key] = wordFreq[key]
+			}
+		}
+	}
+	
+	const result = [];
+  for (key in freq) {
+		const count = freq[key];
+		for (let i = 0; i < count; i++) result.push(key);
+	}
+	
+	return result;
+}
+
+// Do not edit the line below.
+exports.minimumCharactersForWords = minimumCharactersForWords;
+
