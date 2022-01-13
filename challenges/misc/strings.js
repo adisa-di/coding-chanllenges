@@ -84,3 +84,36 @@ function minimumCharactersForWords(words) {
 // Do not edit the line below.
 exports.minimumCharactersForWords = minimumCharactersForWords;
 
+// if you can't split, what are you going to join?
+
+// O(N) solution
+function reverseWordsInString(string) {
+  // Write your code here.
+	
+	let res = "";
+	let currWord = "";
+	
+	for (let i = 0; i < string.length; i++) {
+		// reset
+		if (string[i] === " ") {
+			if (currWord.length > 0) {
+				res = currWord + res;
+				currWord = "";
+			}
+			res = string[i] + res; // spaces
+		} else {
+			currWord += string[i];
+		}
+	}
+	
+	if (currWord.length > 0) {
+		res = currWord + res;
+	}
+	
+  return res;
+}
+
+// Do not edit the line below.
+exports.reverseWordsInString = reverseWordsInString;
+
+
