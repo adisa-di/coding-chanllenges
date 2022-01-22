@@ -9,16 +9,13 @@ function cycleInGraph(edges) {
 		if (found) return;
 		
 		visited[currNode] = true;
-	
 		const nextEdges = edges[currNode]; 
+
 		for (let i = 0; i < nextEdges.length; i++) {
-			
 			const next = nextEdges[i]; 
 			if (visited[next]) found = true;
 			checkCycle(next, visited); 
-			
-			// back tracking
-			visited[next] = false; // we have to "un-visit" the node
+			visited[next] = false; // back-track
 		}
 	}
 	
