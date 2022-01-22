@@ -43,7 +43,6 @@ function groupAnagrams(words) {
 // Do not edit the line below.
 exports.groupAnagrams = groupAnagrams;
 
-
 function minimumCharactersForWords(words) {
   // Write your code here.
 	
